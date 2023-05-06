@@ -183,7 +183,7 @@
         var currURL = new URL(window.location.href);
         var authCode = currURL.searchParams.get("code");
 
-        if (accessToken == null) {
+        if (authCode == null) {
             let windowURL = new URL("https://connect.deezer.com/oauth/auth.php");
             windowURL.searchParams.set("app_id", appId);
             windowURL.searchParams.set
