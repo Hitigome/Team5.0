@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #121215;
+    color: #FFFFFF;
+    font-family: Roboto, sans-serif;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.site-title {
+    font-weight: 900;
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.subtext {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 64px;
+}
+
+.login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    padding: 16px 16px;
+    gap: 8px;
+    background-color: #ef5466;
+}
+
+.login-button-logo {
+    height: auto;
+    width: 24px;
+    min-width: 24px;
+}
+
+.login-button-text {
+    color: #FFFFFF;
+    font-weight: 700
+}
