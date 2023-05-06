@@ -178,13 +178,37 @@
     <script>
         var appId = "602804";
         var secret = "49afaeefafa3816b065f60d15c891ecf";
+        var accessToken;
 
-        let windowURL = new URL("https://connect.deezer.com/oauth/auth.php");
-        windowURL.searchParams.set("app_id", appId);
-        windowURL.searchParams.set
-            ("redirect_uri", "https://hitigome.github.io/");
+        var currURL = new URL(window.location.href);
+        var authCode = currURL.searchParams.get("code");
 
-        window.open(windowURL, "_blank");
+        if (accessToken == null) {
+            let windowURL = new URL("https://connect.deezer.com/oauth/auth.php");
+            windowURL.searchParams.set("app_id", appId);
+            windowURL.searchParams.set
+                ("redirect_uri", "https://cpand2.github.io/Team5.0/");
+    
+            window.open(windowURL, "_blank");
+        } else {
+            var accessTokURL = new URL("https://connect.deezer.com/oauth/access_token.php");
+            // accessTokURL.searchParams.set("app_id", appId);
+            // accessTokURL.searchParams.set("secret", secret);
+            // accessTokURL.searchParams.set("code", authCode);
+
+            var response = await fetch(accessTokURL, {
+                "app_id": appId,
+                "secret": secret,
+                "code": authCode,
+                "output": "json"
+            })
+            .then(r => r.json())
+            .then(r => accessToken = r.access_token);
+
+            console.log(accessToken);
+
+            // https://connect.deezer.com/oauth/access_token.php?app_id=YOU_APP_ID&secret=YOU_APP_SECRET&code=THE_CODE_FROM_ABOVE
+        }
     </script>
 </body>
 
