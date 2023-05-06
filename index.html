@@ -207,8 +207,9 @@
                 "code": authCode,
                 "output": "json"
             })
-            .then(r => { return r.json(); })
-            .then(r => accessToken = r.access_token);
+            .then(r => { console.log(r); })
+            // .then(r => { return r.json(); })
+            // .then(r => accessToken = r.access_token);
     
             console.log(accessToken);
         }
