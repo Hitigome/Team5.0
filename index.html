@@ -195,7 +195,8 @@
         }
         
         async function getAccessToken() {
-            var accessTokURL = new URL("https://connect.deezer.com/oauth/access_token.php");
+            var accessTokURL = new URL("https://cors-anywhere.herokuapp.com/ \
+            https://connect.deezer.com/oauth/access_token.php");
             // accessTokURL.searchParams.set("app_id", appId);
             // accessTokURL.searchParams.set("secret", secret);
             // accessTokURL.searchParams.set("code", authCode);
