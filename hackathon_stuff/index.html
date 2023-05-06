@@ -179,7 +179,12 @@
         var appId = "602804";
         var secret = "49afaeefafa3816b065f60d15c891ecf";
 
-        
+        let windowURL = new URL("https://connect.deezer.com/oauth/auth.php");
+        windowURL.searchParams.set("app_id", appId);
+        windowURL.searchParams.set
+            ("redirect_uri", "https://hitigome.github.io/");
+
+        window.open(windowURL, "_blank");
     </script>
 </body>
 
