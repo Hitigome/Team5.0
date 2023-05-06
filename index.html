@@ -200,6 +200,10 @@
                     DZ.api('/user/me', function (response) {
                         console.log('Good to see you, ' + response.name + '.');
                     });
+
+                    DZ.api('/user/me/albums', function (response) {
+                        console.log('saved albums: ' + response.name);
+                    });
                 } else {
                     console.log('User cancelled login or did not fully authorize.');
                 }
