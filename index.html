@@ -194,32 +194,43 @@
         var currURL = new URL(window.location.href);
         var authCode = currURL.searchParams.get("code");
 
-        if (authCode == null) {
-            let windowURL = new URL("https://connect.deezer.com/oauth/auth.php");
-            windowURL.searchParams.set("app_id", appId);
-            windowURL.searchParams.set
-                ("redirect_uri", "https://cpand2.github.io/Team5.0/");
-    
-            window.open(windowURL, "_blank");
-        } else {
-            getAccessToken();
-        }
-        
-        async function getAccessToken() {
-            var accessTokURL = new URL("https://cors-anywhere.herokuapp.com/corsdemo/ \
-            https://connect.deezer.com/oauth/access_token.php");
-            accessTokURL.searchParams.set("app_id", appId);
-            accessTokURL.searchParams.set("secret", secret);
-            accessTokURL.searchParams.set("code", authCode);
-            accessTokURL.searchParams.set("output", "json");
+        DZ.login(function(response) {
+                if (response.authResponse) {
+                    console.log('Welcome!  Fetching your information.... ');
+                    DZ.api('/user/me', function (response) {
+                        console.log('Good to see you, ' + response.name + '.');
+                    });
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            }, { perms: 'basic_access,email' });
 
-            var response = await fetch(accessTokURL)
-            .then(r => { console.log(r); });
-            // .then(r => { return r.json(); })
-            // .then(r => accessToken = r.access_token);
+        // if (authCode == null) {
+        //     let windowURL = new URL("https://connect.deezer.com/oauth/auth.php");
+        //     windowURL.searchParams.set("app_id", appId);
+        //     windowURL.searchParams.set
+        //         ("redirect_uri", "https://cpand2.github.io/Team5.0/");
     
-            console.log(accessToken);
-        }
+        //     window.open(windowURL, "_blank");
+        // } else {
+        //     getAccessToken();
+        // }
+        
+        // async function getAccessToken() {
+        //     var accessTokURL = new URL("https://cors-anywhere.herokuapp.com/corsdemo/ \
+        //     https://connect.deezer.com/oauth/access_token.php");
+        //     accessTokURL.searchParams.set("app_id", appId);
+        //     accessTokURL.searchParams.set("secret", secret);
+        //     accessTokURL.searchParams.set("code", authCode);
+        //     accessTokURL.searchParams.set("output", "json");
+
+        //     var response = await fetch(accessTokURL)
+        //     .then(r => { console.log(r); });
+        //     // .then(r => { return r.json(); })
+        //     // .then(r => accessToken = r.access_token);
+    
+        //     console.log(accessToken);
+        // }
 
     </script>
 </body>
