@@ -8,15 +8,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://e-cdn-files.dzcdn.net/js/min/dz.js"></script>
 </head>
+
 <body>
+    <div id="dz-root"></div>
+    <script>
+    	DZ.init({
+    		appId  : '602804',
+    		channelUrl : 'https://cpand2.github.io/Team5.0/dzChannel'
+    	});
+    </script>
+
     <div class="main-container">
         <h1 class="site-title">Cosine</h1>
         <p class="subtext">Explore live music near you, personalized to your music tastes.</p>
         <button class="login-button" type="button">
             <img class="login-button-logo" src="./hackathon_stuff/images/deezer-icon.png">
             <span class="login-button-text">Log in with Deezer</span>
-        </button>
+        </button>   
     </div>
+    
+    <script>
+      DZ.login(function(response) {
+            if (response.authResponse) {
+                console.log('Welcome!  Fetching your information.... ');
+                DZ.api('/user/me', function (response) {
+                    console.log('Good to see you, ' + response.name + '.');
+                });
+
+                DZ.api('/user/me/albums', function (response) {
+                    console.log('saved albums: ');
+                    console.log(response);
+                });
+            } else {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        }, { perms: 'basic_access,email' });
+    </script>
 </body>
 </html>
