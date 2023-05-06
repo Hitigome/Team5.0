@@ -191,6 +191,10 @@
     
             window.open(windowURL, "_blank");
         } else {
+            getAccessToken();
+        }
+        
+        async function getAccessToken() {
             var accessTokURL = new URL("https://connect.deezer.com/oauth/access_token.php");
             // accessTokURL.searchParams.set("app_id", appId);
             // accessTokURL.searchParams.set("secret", secret);
@@ -204,11 +208,10 @@
             })
             .then(r => r.json())
             .then(r => accessToken = r.access_token);
-
+    
             console.log(accessToken);
-
-            // https://connect.deezer.com/oauth/access_token.php?app_id=YOU_APP_ID&secret=YOU_APP_SECRET&code=THE_CODE_FROM_ABOVE
         }
+
     </script>
 </body>
 
