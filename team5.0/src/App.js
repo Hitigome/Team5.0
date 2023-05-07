@@ -8,7 +8,7 @@ function App() {
         <div className="container">
           <div className="row">
             <div className="col">
-              <h3>Site Title</h3>
+              <h3>Site Titles</h3>
             </div>
             <div className="col-6"></div>
             <div className="col">
@@ -39,7 +39,7 @@ function App() {
             <div className="col-3">
               <div className="card">
                 <a href="#" title="Artist" className="thumb">
-                  <img src="hackathon_stuff/images/MF-DOOM-Operation.jpeg" alt="placeholder" className="card-img-top" data-toggle="modal" data-target=".modal-profile-lg" />
+                  <img src="images/MF-DOOM-Operation.jpeg" alt="placeholder" className="card-img-top" data-toggle="modal" data-target=".modal-profile-lg" />
                 </a>
                 <div className="card-body">
                   <h5 className="card-title">Artist Name</h5>
@@ -160,7 +160,7 @@ function App() {
             </div>
           </div>
         </div>
-
+{/* Modal */}
         <div className="modal fade modal-profile" tabindex="-1" role="dialog" aria-labelledby="modalProfile" aria-hidden="true">
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
