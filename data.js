@@ -133,9 +133,9 @@ async function search_city() {
     .then(data => {
         const weatherCondition = data.current.condition.text;
         const weatherIcon = data.current.condition.icon;
-        const fileName = weatherIcon.substring(weatherIcon.indexOf("x64") + 4);
-        const folder_path = "/Users/hitigome/Desktop/hackathon_api_work/weather/weather/64x64";
-        const final_url = folder_path + fileName;
+        //const fileName = weatherIcon.substring(weatherIcon.indexOf("x64") + 4);
+        //const folder_path = "/Users/hitigome/Desktop/hackathon_api_work/weather/weather/64x64";
+        const final_url = weatherIcon;
         let weather_img = document.createElement('img');
         weather_img.src = final_url;
         weather_img.alt = weatherCondition;
