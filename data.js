@@ -100,9 +100,9 @@ async function search_city() {
                 eventUrlElement.href = event.url;
                 eventUrlElement.textContent = 'Event Link';
                 cardBody.appendChild(eventUrlElement);
-                
                 card.appendChild(cardBody);
                 cardContainer.appendChild(card);
+                
               }
             });
           }
@@ -120,7 +120,7 @@ async function search_city() {
         Math.sin(dLat / 2) * Math.sin(dLat / 2) +
         Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      const distance = earthRadius * c;
+      const distance = earthRadius * c; 
       return distance;
     }
   
@@ -134,7 +134,7 @@ async function search_city() {
         const weatherCondition = data.current.condition.text;
         const weatherIcon = data.current.condition.icon;
         const fileName = weatherIcon.substring(weatherIcon.indexOf("x64") + 4);
-        const folder_path = "file:///C:/Users/aarju/OneDrive/Documents/my_stuff/hackathon_api_work/weather/weather/64x64/";
+        const folder_path = "/Users/hitigome/Desktop/hackathon_api_work/weather/weather/64x64";
         const final_url = folder_path + fileName;
         let weather_img = document.createElement('img');
         weather_img.src = final_url;
