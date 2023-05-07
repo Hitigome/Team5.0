@@ -9,7 +9,7 @@ function App() {
         <div>{favoriteArtists()}</div>
         <div>{genre()}</div>
         {/* Modal */}
-        
+
       </main>
 
     </div>
@@ -53,7 +53,7 @@ function favoriteArtists() {
     <div className="container py-3">
       <h4>Your Favorite Artists</h4>
       <div className="row">
-      <div className="col-3">{card({ name: "Artist Name", imageSrc: "images/MF-DOOM-Operation.jpeg", description: "Description" })}</div>
+        <div className="col-3">{card({ name: "Artist Name", imageSrc: "images/MF-DOOM-Operation.jpeg", description: "Description" })}</div>
       </div>
     </div>
   );
@@ -105,8 +105,8 @@ function genre() {
   );
 }
 
-function modal(imageSrc){
-  return(
+function modal(imageSrc) {
+  return (
     <div className="modal fade modal-profile" tabindex="-1" role="dialog" aria-labelledby="modalProfile" aria-hidden="true">
       <div className="modal-dialog modal-lg">
         <div className="modal-content">
@@ -133,27 +133,45 @@ function modal(imageSrc){
 }
 
 function ArtistCard(props) {
-  const {name, imageSrc} = props;
+  const { name, imageSrc } = props;
   return (
     <div>
-        <a href="#" title={name} className="thumb" data-toggle="modal" data-target=".modal-profile">
-          <img src={imageSrc} alt={name} className="card-img-top" />
-        </a>
+      <a href="#" title={name} className="thumb" data-toggle="modal" data-target=".modal-profile">
+        <img src={imageSrc} alt={name} className="card-img-top" />
+      </a>
       {modal(imageSrc)}
     </div>
   );
 }
 
-function card(){
-  return(
-          <div className="card">
-            <ArtistCard imageSrc="images/MF-DOOM-Operation.jpeg" artistName="Artist Name" description="Description" />
-            <div className="card-body">
-              <h5 className="card-title">Artist Name</h5>
-              <p className="card-text">Description</p>
-            </div>
-          </div>
-  );       
+function card() {
+  return (
+    <div className="card">
+      <ArtistCard imageSrc="images/MF-DOOM-Operation.jpeg" artistName="Artist Name" description="Description" />
+      <div className="card-body">
+        <h5 className="card-title">Artist Name</h5>
+        <p className="card-text">Description</p>
+      </div>
+    </div>
+  );
+}
+
+function navigation() {
+  return (
+    <div>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand">Navbar</a>
+      <div>
+        <input type="text" id="city"></input>
+          <button onclick="search_city()"> Search</button>
+          <button onclick="recommendConcert()"> Recommend </button>
+      </div>
+      <div id="weather-icon"></div>
+    </nav><div class="container">
+        <div class="row" id="cardContainer"></div>
+      </div>
+      </div>
+  );
 }
 
 async function search_city() {
@@ -237,11 +255,11 @@ async function search_city() {
               const performerNames = document.createElement('p');
               let namesString = "By ";
               event.performers.forEach((performer, index) => {
-                  const artistName = performer.name;
-                  if (index > 0) {
-                      namesString += ", ";
-                  }
-                  namesString += artistName;
+                const artistName = performer.name;
+                if (index > 0) {
+                  namesString += ", ";
+                }
+                namesString += artistName;
               });
               performerNames.textContent = namesString;
               cardBody.appendChild(performerNames);
@@ -257,7 +275,7 @@ async function search_city() {
               eventUrlElement.href = event.url;
               eventUrlElement.textContent = 'Event Link';
               cardBody.appendChild(eventUrlElement);
-              
+
               card.appendChild(cardBody);
               cardContainer.appendChild(card);
             }
@@ -286,8 +304,8 @@ async function search_city() {
   }
   const apiKey = '5d070128504a470dac9221828230605';
   fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
-  .then(response => response.json())
-  .then(data => {
+    .then(response => response.json())
+    .then(data => {
       const weatherCondition = data.current.condition.text;
       const weatherIcon = data.current.condition.icon;
       const fileName = weatherIcon.substring(weatherIcon.indexOf("x64") + 4);
@@ -299,10 +317,10 @@ async function search_city() {
       const weatherContainer = document.getElementById("weather-icon");
       weatherContainer.innerHTML = '';
       weatherContainer.appendChild(weather_img);
-  })
-  .catch(error => {
+    })
+    .catch(error => {
       console.error('Error:', error);
-  });
+    });
 }
 
 function recommendConcert() {
@@ -315,23 +333,23 @@ function recommendConcert() {
 
   // Make the API request using fetch
   fetch(url)
-  .then(response => response.json())
-  .then(data => {
+    .then(response => response.json())
+    .then(data => {
       // Process the returned data
       const recommendations = data.recommendations;
       // Access and utilize the recommended events and their information
       recommendations.forEach(recommendation => {
-      const event = recommendation.event;
-      const eventName = event.title;
-      const eventDate = event.datetime_local;
-      const venueName = event.venue.name;
-      // ... Process and use other event details as needed
+        const event = recommendation.event;
+        const eventName = event.title;
+        const eventDate = event.datetime_local;
+        const venueName = event.venue.name;
+        // ... Process and use other event details as needed
       });
-  })
-  .catch(error => {
+    })
+    .catch(error => {
       // Handle any errors that occur during the API request
       console.log('Error:', error);
-  });
+    });
 }
 
 export default App;
