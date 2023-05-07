@@ -9,11 +9,13 @@ function App() {
         <div>{favoriteArtists()}</div>
         <div>{genre()}</div>
         {/* Modal */}
-
+        
       </main>
 
-    </div>
-  );
+      </div>
+    );
+  else
+      return (<div></div>);
 }
 
 function header() {
