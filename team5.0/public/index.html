@@ -36,18 +36,13 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
   <script src="https://e-cdn-files.dzcdn.net/js/min/dz.js"></script>
-</head>
 
-<body>
-  <div id="dz-root"></div>
   <script>
     DZ.init({
       appId: '602804',
       channelUrl: 'https://Hitigome.github.io/Team5.0/',
     });
-  </script>
 
-  <script>
     DZ.login(function (response) {
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
@@ -59,7 +54,11 @@
       }
     }, { perms: 'basic_access,email' });
   </script>
+</head>
 
+<body>
+  <div id="dz-root"></div>
+  
   <script>
     $('a.thumb').click(function (event) {
       event.preventDefault();
