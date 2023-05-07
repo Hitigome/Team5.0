@@ -50,10 +50,11 @@ async function search_city() {
               if (performer.image) {
                 const card = document.createElement('div');
                 card.className = 'card';
+                card.style.width = '25%';
                 const performerImage = document.createElement('img');
                 performerImage.src = performer.image;
                 performerImage.alt = performer.name;
-                performerImage.className = 'card-img-top';
+                performerImage.className = 'card card-img-top';
                 performerImage.style.marginBottom = '10px';
                 card.appendChild(performerImage);
                 const cardBody = document.createElement('div');
