@@ -36,7 +36,8 @@ async function search_city() {
   
       const response = await fetch(`https://api.seatgeek.com/2/events?venue.city=${city}&client_id=MzM1MDUwODJ8MTY4MzQwNTgxMy42NjgxNTIz`);
       const data = await response.json();
-  
+      const cardContainer = document.getElementById('cardContainer');
+      cardContainer.innerHTML = '';  
       data.events.forEach((event) => {
         if (event.type === "concert") {
           console.log(event);
@@ -45,7 +46,7 @@ async function search_city() {
           dest_long = event.venue.location.lon;
           let miles = calculateDistance(my_lat, my_long, dest_lat, dest_long);
           if (event.performers && event.performers.length > 0) {
-            const cardContainer = document.getElementById('cardContainer');
+            
             event.performers.forEach((performer) => {
               if (performer.image) {
                 const card = document.createElement('div');
