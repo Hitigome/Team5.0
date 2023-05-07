@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  if(isLoggedIn){
   return (
     <div className="body">
       <div>{header()}</div>
@@ -14,8 +15,9 @@ function App() {
 
       </div>
     );
-  else
+  }else{
       return (<div></div>);
+  }
 }
 
 function header() {
