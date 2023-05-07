@@ -2,18 +2,21 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
-    <div className="body">
-      <div>{header()}</div>
-      <main>
-        <div>{favoriteArtists()}</div>
-        <div>{genre()}</div>
-        {/* Modal */}
-        
-      </main>
+  if (isLoggedIn)
+    return (
+      <div className="body">
+        <div>{header()}</div>
+        <main>
+          <div>{favoriteArtists()}</div>
+          <div>{genre()}</div>
+          {/* Modal */}
+          
+        </main>
 
-    </div>
-  );
+      </div>
+    );
+  else
+      return (<div></div>);
 }
 
 function header() {

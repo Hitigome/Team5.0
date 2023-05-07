@@ -37,7 +37,10 @@
     crossorigin="anonymous"></script>
   <script src="https://e-cdn-files.dzcdn.net/js/min/dz.js"></script>
 
+  <div id="dz-root"></div>
   <script>
+    var isLoggedin = false;
+
     DZ.init({
       appId: '602804',
       channelUrl: 'https://Hitigome.github.io/Team5.0/',
@@ -47,6 +50,7 @@
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
         DZ.api('/user/me', function (response) {
+          isLoggedin = true;
           console.log('Good to see you, ' + response.name + '.');
         });
       } else {
@@ -57,8 +61,6 @@
 </head>
 
 <body>
-  <div id="dz-root"></div>
-  
   <script>
     $('a.thumb').click(function (event) {
       event.preventDefault();
