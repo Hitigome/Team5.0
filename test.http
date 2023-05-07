@@ -1,0 +1,1 @@
+GET https://api.seatgeek.com/2/recommendations?performers.id=TaylorSwift&postal_code=10014&client_id=MzM1MDUwODJ8MTY4MzQwNTgxMy42NjgxNTIz
