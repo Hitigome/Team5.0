@@ -16,36 +16,43 @@
     <script>
     	DZ.init({
     		appId  : '602804',
-    		channelUrl : 'https://Hitigome.github.io/Team5.0/dzChannel',
+    		channelUrl : 'http://localhost:8000/main.html',
             redirectUri: 'https://Hitigome.github.io/Team5.0/main.html'
     	});
+
+        function openLogin() {
+            console.log("button clicked");
+            DZ.login(function(response) {
+                  if (response.authResponse.accessToken) {
+                      console.log('Welcome!  Fetching your information.... ');
+                      DZ.api('/user/me', function (response) {
+                          console.log('Good to see you, ' + response.name + '.');
+                      });
+      
+                      DZ.api('/user/me/albums', function (response) {
+                          console.log('saved albums: ');
+                          console.log(response);
+                      });
+
+                      document.getElementsByClassName("main-container")[0].style.display = "none";
+                  } else {
+                      console.log('User cancelled login or did not fully authorize.');
+                  }
+              }, { perms: 'basic_access,email' });
+        }
     </script>
 
     <div class="main-container">
         <h1 class="site-title">Find Me Concerts</h1>
         <p class="subtext">Explore live music near you, personalized to your music tastes.</p>
-        <button class="login-button" type="button">
+        <button class="login-button" type="button" onclick="openLogin()">
             <img class="login-button-logo" src="./hackathon_stuff/images/deezer-icon.png">
             <span class="login-button-text">Log in with Deezer</span>
         </button>   
     </div>
     
     <script>
-      DZ.login(function(response) {
-            if (response.authResponse) {
-                console.log('Welcome!  Fetching your information.... ');
-                DZ.api('/user/me', function (response) {
-                    console.log('Good to see you, ' + response.name + '.');
-                });
-
-                DZ.api('/user/me/albums', function (response) {
-                    console.log('saved albums: ');
-                    console.log(response);
-                });
-            } else {
-                console.log('User cancelled login or did not fully authorize.');
-            }
-        }, { perms: 'basic_access,email' });
+        
     </script>
 </body>
 </html>

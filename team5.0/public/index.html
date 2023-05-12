@@ -48,7 +48,8 @@
 
     DZ.login(function (response) {
       if (response.authResponse) {
-        console.log('Welcome!  Fetching your information.... ');
+        console.log(response.authResponse);
+        console.log('Welcome!  Fetching your information....aaaa ');
         DZ.api('/user/me', function (response) {
           isLoggedin = true;
           console.log('Good to see you, ' + response.name + '.');
